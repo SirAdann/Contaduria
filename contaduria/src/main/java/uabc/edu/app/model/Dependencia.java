@@ -18,13 +18,10 @@ public class Dependencia {
 	private int campus;
 	private String dependencia;
 	
-	
-	
-	
-	
 	public int getIddependencia() {
 		return iddependencia;
 	}
+	
 	public void setIddependencia(int iddependencia) {
 		this.iddependencia = iddependencia;
 	}
@@ -32,22 +29,22 @@ public class Dependencia {
 	public int getCampus() {
 		return campus;
 	}
+	
 	public void setCampus(int campus) {
 		this.campus = campus;
 	}
+	
 	public String getDependencia() {
 		return dependencia;
 	}
+	
 	public void setDependencia(String dependencia) {
 		this.dependencia = dependencia;
 	}
+	
 	@Override
 	public String toString() {
 		return "Dependencia [iddependencia=" + iddependencia + ", campus=" + campus + ", dependencia=" + dependencia
 				+ "]";
 	}
-	
-	
-	
-
 }

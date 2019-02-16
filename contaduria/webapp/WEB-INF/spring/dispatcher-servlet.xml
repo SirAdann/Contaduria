@@ -16,13 +16,9 @@
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.11.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.0.xsd">
 		
-		
-
 	<context:component-scan base-package="uabc.edu.app.controller" />
 	<mvc:annotation-driven />
-	
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
@@ -30,15 +26,9 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-
-
 	
-
-
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
-
 
 </beans>

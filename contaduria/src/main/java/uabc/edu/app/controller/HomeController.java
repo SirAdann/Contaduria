@@ -30,11 +30,9 @@ public class HomeController {
 	public String mostrarOficios(@RequestParam String idParam1, Model modelo) {
 		int id = Integer.parseInt(idParam1);
 
-		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id,
-				Sort.by("orden").descending());
+		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
 
-		Documento documento = metodosDocumentos
-				.BuscarDocumento("CONCEPTOS DE GASTO NO APROBADOS POR LA SEP PARA COMPROBACION DEL PFCE");
+		Documento documento = metodosDocumentos.BuscarDocumento("CONCEPTOS DE GASTO NO APROBADOS POR LA SEP PARA COMPROBACION DEL PFCE");
 		modelo.addAttribute("documento", documento);
 		modelo.addAttribute("documentos", listadocs);
 
@@ -56,11 +54,6 @@ public class HomeController {
 		return "secciones/cont_gob";
 	}
 	
-	
-	
-	
-	
-
 	@GetMapping(value = "LineamientosContables")
 	public String mostrarLinCont(@RequestParam String idParam1,Model modelo) {
 		

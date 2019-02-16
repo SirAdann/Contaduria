@@ -9,29 +9,23 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-
-
-
-<context:component-scan base-package="uabc.edu.app.service" />
-
+	<context:component-scan base-package="uabc.edu.app.service" />
 
 	<jpa:repositories base-package="uabc.edu.app.repository" />
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/contaduria?useSSL=false" />
 		<property name="username" value="root" />
-		<property name="password" value="lawliet15" />
+		<property name="password" value="chiquitamama" />
 	</bean>
-	
-	<bean id="jpaVendorAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+
+	<bean id="jpaVendorAdapter"	class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="generateDdl" value="false" />
 		<property name="showSql" value="true"></property>
 		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
 	</bean>
 	
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="entityManagerFactory"	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="packagesToScan" value="uabc.edu.app.model" />
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
@@ -41,6 +35,4 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-
-
 </beans>
