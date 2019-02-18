@@ -75,5 +75,8 @@
 		    <version>3.0.1</version>
 		    <scope>provided</scope>
 		</dependency> 
+		
+		<!-- https://mvnrepository.com/artifact/org.mindrot.bcrypt/bcrypt -->
+		
 	</dependencies>
 </project>

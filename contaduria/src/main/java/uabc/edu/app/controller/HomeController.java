@@ -22,12 +22,12 @@ public class HomeController {
 	
 	@Autowired
 	private IDocumentoService metodosDocumentos;
-/*
+
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String mostrarLogin() {
 		return "login";
 	}
-	*/
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 
@@ -118,6 +118,6 @@ public class HomeController {
 		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 		logoutHandler.logout(request, null, null);
 		
-		return "redirect:login";
+		return "redirect:/login";
 	}
 }
