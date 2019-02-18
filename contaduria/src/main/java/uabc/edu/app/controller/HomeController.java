@@ -2,12 +2,16 @@ package uabc.edu.app.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import uabc.edu.app.model.Documento;
@@ -18,8 +22,13 @@ public class HomeController {
 	
 	@Autowired
 	private IDocumentoService metodosDocumentos;
-
-	@GetMapping("/")
+/*
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String mostrarLogin() {
+		return "login";
+	}
+	*/
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 
 		return "home";
@@ -28,6 +37,7 @@ public class HomeController {
 
 	@GetMapping(value = "oficios")
 	public String mostrarOficios(@RequestParam String idParam1, Model modelo) {
+		System.out.println("Si entro al metodo oficios");
 		int id = Integer.parseInt(idParam1);
 
 		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
@@ -42,7 +52,7 @@ public class HomeController {
 	
 	@GetMapping(value = "cont_gob")
 	public String mostrarContGob(@RequestParam String idParam1,Model modelo) {
-		
+		System.out.println("Si entro al metodo contabilidad gubernamental");
 		int id = Integer.parseInt(idParam1);
 
 		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
@@ -56,7 +66,7 @@ public class HomeController {
 	
 	@GetMapping(value = "LineamientosContables")
 	public String mostrarLinCont(@RequestParam String idParam1,Model modelo) {
-		
+		System.out.println("Si entro al metodo mostrar lineamientos");
 		int id = Integer.parseInt(idParam1);
 
 		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
@@ -70,7 +80,7 @@ public class HomeController {
 
 	@GetMapping(value = "politicas")
 	public String mostrarPoliticas(@RequestParam String idParam1,Model modelo) {
-		
+		System.out.println("Si entro al metodo mostrar politicas");
 		int id = Integer.parseInt(idParam1);
 		
 		
@@ -88,7 +98,7 @@ public class HomeController {
 	
 	@GetMapping(value = "capacitaciones")
 	public String mostrarCapacitaciones(@RequestParam String idParam1,Model modelo) {
-		
+		System.out.println("Si entro al metodo mostrar capacitaciones");
 		int id = Integer.parseInt(idParam1);
 		
 		
@@ -101,5 +111,13 @@ public class HomeController {
 
 		return "secciones/capacitaciones";
 	}
-
+	
+	@GetMapping(value = "/logout")
+	public String logout(HttpServletRequest request) {
+		System.out.println("Si entro al metodo de logout");
+		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+		logoutHandler.logout(request, null, null);
+		
+		return "redirect:login";
+	}
 }
