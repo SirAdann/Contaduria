@@ -2,6 +2,7 @@ package uabc.edu.app.service;
 
 import java.util.List;
 
+
 import uabc.edu.app.model.Documento;
 import uabc.edu.app.model.Usuario;
 
@@ -13,5 +14,7 @@ public interface IUsuarioService {
 	void eliminar(int id_usuario);
 
 	Usuario buscarporid(int id_usuario);
+	
+	Usuario buscarPorCorreo(String correo);
 
 }

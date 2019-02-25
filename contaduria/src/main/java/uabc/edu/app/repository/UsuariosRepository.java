@@ -6,6 +6,6 @@ import uabc.edu.app.model.Usuario;
 
 public interface UsuariosRepository extends JpaRepository<Usuario, Integer> {
 	
-	
+	Usuario findByCorreo(String correo);
 
 }

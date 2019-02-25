@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,14 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import uabc.edu.app.model.Documento;
+import uabc.edu.app.model.Usuario;
 import uabc.edu.app.service.IDocumentoService;
+import uabc.edu.app.service.IUsuarioService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
 	private IDocumentoService metodosDocumentos;
+	
+	@Autowired
+	private IUsuarioService serviceUsuarios;
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String mostrarLogin() {
@@ -29,7 +36,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String mostrarPrincipal(Model model) {
+	public String mostrarPrincipal(Authentication authentication, Model model) {
+		System.out.println("Username: " + authentication.getName());
+		Usuario usuarioAuth = serviceUsuarios.buscarPorCorreo(authentication.getName());
+		model.addAttribute("usuarioAuth", usuarioAuth);
+		
 
 		return "home";
 

@@ -21,10 +21,12 @@
 		<intercept-url pattern="/documentos/*" access="hasAnyAuthority('Administrador')"/>
 		<intercept-url pattern="/dependencias/*" access="hasAnyAuthority('Administrador')"/>
 		<intercept-url pattern="/cierre*" access="hasAnyAuthority('Usuario','Informes')"/>
+		
 		<!-- Formulario de login personalizado -->
-		<form-login login-page="/login" default-target-url="/"/>
+		<form-login login-page="/login"/>
 	</http>
-	<!--  
+	  
+	  <!--  
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
@@ -36,12 +38,12 @@
 	</authentication-manager>
 	-->
  	
- 	<!--  Autenticación desde una base de datos -->
+ 	<authentication-manager> 
 		<authentication-provider>
-			<!--  <password-encoder hash="bcrypt" />-->
+			<password-encoder hash="bcrypt" /> 
 			<jdbc-user-service data-source-ref="dataSource"
 			users-by-username-query="select correo, password, id_estatus, nombre, apellidos, id_usuarios, id_tipo_usuario, id_dependencia from usuarios where correo = ? "
 			authorities-by-username-query="select a.correo, b.tipo, b.id_tipo_usuario from usuarios a, tipousuario b where a.id_tipo_usuario=b.id_tipo_usuario and a.correo = ? " />
 		</authentication-provider>
 	</authentication-manager> 
-</b:beans>
+	</b:beans>

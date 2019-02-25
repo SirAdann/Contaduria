@@ -3,6 +3,7 @@ package uabc.edu.app.controller;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -80,6 +81,11 @@ public class CierresController {
 	@GetMapping("/crear")
 	public String crear(@ModelAttribute DocumentoInforme documentoinforme, Model model) {
 
+		double j;
+		int p=2;
+		
+		j=(double)p;
+		
 		List<CategoriasInformes> listaCategorias = metodosCategoriasInformes.buscarTodas();
 
 		model.addAttribute("Categorias", listaCategorias);
@@ -190,14 +196,10 @@ public class CierresController {
 		//attribute.addFlashAttribute("mensaje", "El registro fue guardado");
 		return "redirect:/documentos/index";
 	}
-
-	
-	
 	
 	
 	
 
-	
 
 }	
 	

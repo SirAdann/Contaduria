@@ -42,4 +42,9 @@ public class UsuarioServiceJPA implements IUsuarioService {
 		return null;
 	}
 
+	@Override
+	public Usuario buscarPorCorreo(String correo) {
+		Usuario usuario = UsuariosRepo.findByCorreo(correo);
+		return usuario;
+	}
 }
