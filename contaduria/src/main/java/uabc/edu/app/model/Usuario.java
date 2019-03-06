@@ -20,8 +20,6 @@ public class Usuario {
 	private String password;
 	@Column(name="id_dependencia")
 	private int iddependencia;
-	@Column(name="id_tipo_usuario")
-	private int idtipousuario;
 	@Column(name="id_estatus")
 	private int idestatus;
 	

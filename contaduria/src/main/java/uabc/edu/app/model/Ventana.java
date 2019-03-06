@@ -15,10 +15,13 @@ public class Ventana {
 	private int idventana;
     private String nombre;
 	private String liga;
-	private String tipo;
+	@Column(name="id_nivel")
+	private int idNivel;
 	private String estatus;
-	@Column(name="nomenclatura_menu")
-	private double nomenclaturamenu;
+	@Column(name="id_subMenu")
+	private int idsubMenu;
+	@Column(name="id_referencia")
+	private int idReferencia;
 	
 	
 	
@@ -28,24 +31,15 @@ public class Ventana {
 
 
 
-
-
-
 	public int getIdventana() {
 		return idventana;
 	}
 
 
 
-
-
-
 	public void setIdventana(int idventana) {
 		this.idventana = idventana;
 	}
-
-
-
 
 
 
@@ -73,15 +67,17 @@ public class Ventana {
 
 
 
-	public String getTipo() {
-		return tipo;
+	public int getIdNivel() {
+		return idNivel;
 	}
 
 
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setIdNivel(int idNivel) {
+		this.idNivel = idNivel;
 	}
+
+
 
 	public String getEstatus() {
 		return estatus;
@@ -95,26 +91,37 @@ public class Ventana {
 
 
 
-	public double getNomenclaturamenu() {
-		return nomenclaturamenu;
+	public int getIdsubMenu() {
+		return idsubMenu;
 	}
 
 
 
-	public void setNomenclaturamenu(double nomenclaturamenu) {
-		this.nomenclaturamenu = nomenclaturamenu;
+	public void setIdsubMenu(int idsubMenu) {
+		this.idsubMenu = idsubMenu;
 	}
 
 
 
+	public int getIdReferencia() {
+		return idReferencia;
+	}
+
+
+
+	public void setIdReferencia(int idReferencia) {
+		this.idReferencia = idReferencia;
+	}
 
 
 
 	@Override
 	public String toString() {
-		return "Ventana [idventana=" + idventana + ", nombre=" + nombre + ", liga=" + liga + ", tipo=" + tipo
-				+ ", estatus=" + estatus + ", nomenclaturamenu=" + nomenclaturamenu + "]";
+		return "Ventana [idventana=" + idventana + ", nombre=" + nombre + ", liga=" + liga + ", idNivel=" + idNivel
+				+ ", estatus=" + estatus + ", idsubMenu=" + idsubMenu + ", idReferencia=" + idReferencia + "]";
 	}
+
+
 
 
 

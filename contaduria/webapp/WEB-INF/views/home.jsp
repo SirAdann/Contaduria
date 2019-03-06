@@ -25,7 +25,7 @@
 	<jsp:include page="includes/header.jsp"></jsp:include>
 	<br>
 	<div class="container marketing">
-	<div style="text-align:right; "><p>Bienvenido(a) ${ usuarioAuth.nombre } ${ usuarioAuth.apellidos } </p></div></div>
+	<div style="text-align:right; "><p>Bienvenido(a) <%-- ${ usuarioAuth.nombre } ${ usuarioAuth.apellidos } --%></p></div></div>
 
 	<jsp:include page="includes/menu.jsp"></jsp:include>
 	<div class="container">

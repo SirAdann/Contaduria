@@ -27,8 +27,8 @@ public class HomeController {
 	@Autowired
 	private IDocumentoService metodosDocumentos;
 	
-	@Autowired
-	private IUsuarioService serviceUsuarios;
+	//@Autowired
+	//private IUsuarioService serviceUsuarios;
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String mostrarLogin() {
@@ -36,10 +36,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String mostrarPrincipal(Authentication authentication, Model model) {
-		System.out.println("Username: " + authentication.getName());
-		Usuario usuarioAuth = serviceUsuarios.buscarPorCorreo(authentication.getName());
-		model.addAttribute("usuarioAuth", usuarioAuth);
+	public String mostrarPrincipal(Model model) {
+		//System.out.println("Username: " + authentication.getName());
+		//Usuario usuarioAuth = serviceUsuarios.buscarPorCorreo(authentication.getName());
+		//model.addAttribute("usuarioAuth", usuarioAuth);
 		
 
 		return "home";
