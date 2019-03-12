@@ -49,13 +49,15 @@ public class DocumentosController {
 
 	@GetMapping("index")
 	public String mostrarDocumentos(Model modelo) {
-		List<Documento> listadocumentos = metodosDocumentos.buscarTodos();
-
-		List<Ventana> listaVentanas = serviceVentana.buscarTodas();
-
-		modelo.addAttribute("documentos", listadocumentos);
-		modelo.addAttribute("ventanas", listaVentanas);
-
+		System.out.println("Paso 1");
+		//List<Documento> listadocumentos = metodosDocumentos.buscarTodos();
+		System.out.println("Paso 2");
+		//List<Ventana> listaVentanas = serviceVentana.buscarTodas();
+		System.out.println("Paso 3");
+		//modelo.addAttribute("documentos", listadocumentos);
+		System.out.println("Paso 4");
+		//modelo.addAttribute("ventanas", listaVentanas);
+		System.out.println("Paso 5");
 		return "listas/listDocumentos";
 
 	}

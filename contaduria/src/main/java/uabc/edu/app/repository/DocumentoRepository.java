@@ -12,7 +12,7 @@ import uabc.edu.app.model.Documento;
 
 public interface DocumentoRepository extends JpaRepository<Documento, Integer> {
 
-	List<Documento> findBy();
+	List<Documento> findAll();
 
 	Documento findByNombre(String nombre);
 	

@@ -2,6 +2,8 @@ package uabc.edu.app.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ import javax.persistence.Table;
 public class Ventana {
 	
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_ventana")
 	private int idventana;
     private String nombre;
@@ -20,7 +23,7 @@ public class Ventana {
 	private String estatus;
 	@Column(name="id_subMenu")
 	private int idsubMenu;
-	@Column(name="id_referencia")
+	@Column(name="idreferencia")
 	private int idReferencia;
 	
 	

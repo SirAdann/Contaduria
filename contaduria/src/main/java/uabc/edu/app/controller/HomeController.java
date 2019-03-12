@@ -27,8 +27,8 @@ public class HomeController {
 	@Autowired
 	private IDocumentoService metodosDocumentos;
 	
-	//@Autowired
-	//private IUsuarioService serviceUsuarios;
+	@Autowired
+	private IUsuarioService serviceUsuarios;
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String mostrarLogin() {
@@ -36,28 +36,78 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String mostrarPrincipal(Model model) {
-		//System.out.println("Username: " + authentication.getName());
-		//Usuario usuarioAuth = serviceUsuarios.buscarPorCorreo(authentication.getName());
-		//model.addAttribute("usuarioAuth", usuarioAuth);
+	public String mostrarPrincipal(Model model, Authentication authentication) {
+		System.out.println("Username: " + authentication.getName());
+		Usuario usuarioAuth = serviceUsuarios.buscarPorCorreo(authentication.getName());
+		model.addAttribute("usuarioAuth", usuarioAuth);
 		
 
 		return "home";
 
 	}
+	
+	@GetMapping(value = "/seccion")
+	public String mostrarDocumentos(@RequestParam String idParam1, Model modelo) {
+		System.out.println("Si entro al metodo mostrar Documentos");
+		int id = Integer.parseInt(idParam1);
+		int x=0;
+		Documento primerDocumento = null;
+		
+		
+		
+
+		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
+	
+		for(Documento iterator: listadocs) {
+			x++;
+			if(x==1) {
+				primerDocumento= iterator;
+				
+				
+			}
+			
+		}
+
+		//Documento documento = metodosDocumentos.BuscarDocumento("CONCEPTOS DE GASTO NO APROBADOS POR LA SEP PARA COMPROBACION DEL PFCE");
+		modelo.addAttribute("documento", primerDocumento);
+		modelo.addAttribute("documentos", listadocs);
+
+		return "secciones/template";
+	}
+	
+	
+	
 
 	@GetMapping(value = "oficios")
 	public String mostrarOficios(@RequestParam String idParam1, Model modelo) {
+		int x=0;
+		Documento primerDocumento = null;
 		System.out.println("Si entro al metodo oficios");
+		
+		
+		
+		
 		int id = Integer.parseInt(idParam1);
 
 		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
-
-		Documento documento = metodosDocumentos.BuscarDocumento("CONCEPTOS DE GASTO NO APROBADOS POR LA SEP PARA COMPROBACION DEL PFCE");
-		modelo.addAttribute("documento", documento);
+		for(Documento iterator: listadocs) {
+			x++;
+			if(x==1) {
+				primerDocumento= iterator;
+				
+				
+			}
+			
+		}
+		System.out.println("Primer documento "+primerDocumento);
+		
+		Documento documento = metodosDocumentos.BuscarDocumento("");
+		modelo.addAttribute("documento", primerDocumento);
 		modelo.addAttribute("documentos", listadocs);
 
-		System.out.println(documento.getLiga());
+	
+
+		
 		return "secciones/oficios";
 	}
 	
@@ -69,8 +119,13 @@ public class HomeController {
 		List<Documento> listadocs = metodosDocumentos.BuscarDocumentoVentanaOrdenarporOrden(id, Sort.by("orden").descending());
 
 		Documento documento = metodosDocumentos.BuscarDocumento("PLAN DE CUENTAS UABC");
+	
+
 		modelo.addAttribute("documento", documento);
 		modelo.addAttribute("documentos", listadocs);
+		
+		System.out.println(documento.toString());
+		
 
 		return "secciones/cont_gob";
 	}

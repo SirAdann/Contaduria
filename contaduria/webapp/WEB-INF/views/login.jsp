@@ -38,9 +38,9 @@
 	   	       
 			      
 			<label for="username" class="sr-only">Usuario</label>
-			<input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required autofocus>
+			<input type="text" id="username" name="username" class="form-control" placeholder="correo" required autofocus>
 			<label for="password" class="sr-only">Contraseña</label>
-			<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+			<input type="password" id="password" name="password" class="form-control" placeholder="password" required>
 			<input type="hidden"name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
 	  </form>
