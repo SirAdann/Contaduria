@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import uabc.edu.app.model.Documento;
 import uabc.edu.app.model.Ventana;
 import uabc.edu.app.repository.VentanaRepository;
 
@@ -16,10 +17,10 @@ public class VentanaServiceJPA implements IVentanaService {
 
 	@Override
 	public List<Ventana> buscarTodas() {
-		List<Ventana> listVentana= ventanaRepository.findBy();
-		return listVentana;
+		List<Ventana> lista = ventanaRepository.findAll();
+		return lista;
 	}
-
+	
 	//@Override
 	//public Ventana buscarPorId(int id_ventana) {
 		// TODO Auto-generated method stub

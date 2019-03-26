@@ -8,6 +8,5 @@ public interface IVentanaService {
 	
 	
 	List<Ventana> buscarTodas();
-	//Ventana buscarPorId(int id_ventana);
 
 }
